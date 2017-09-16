@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Buildings Images Library</title>
+    <title>Famox</title>
     <meta http-equiv="Content-Type" content="text/html; UTF-8" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/form.css" type="text/css" />
@@ -26,7 +26,7 @@
 			$sql="select * from PRODUCT where product_id = $productid";
 			//echo $sql;
 			$rsproduct=mysql_query($sql,$con);
-			print_r($rsproduct);
+			//print_r($rsproduct);
 			$sql="select category_id from PRODUCT_CATEGORY where product_id = '$productid'";
 			$rsselectcate=mysql_query($sql,$con);
 			$sql="select * from CATEGORY";
@@ -35,17 +35,17 @@
 	<div class=" bg">
 	<div class="contain">
         <h3>Edit Product</h3>
-		<form action="postaddproduct.php?id=<?php echo $row["product_id"];?>" method="post" class="basic-grey" id="catformadd">
-			<?php if($_GET['addproduct']=='true'){
+		<form action="posteditproduct.php?id=<?php echo $productid;?>" method="post" class="basic-grey" >
+			<?php if($_GET['editproduct']=='true'){
 			?>
 			<label>
-					<h4 style="color:red"><strong>Product add successfully!</strong></h4>
+					<h4 style="color:red"><strong>Product Edit successfully!</strong></h4>
 			</label>
 			<?php
-			  }else if($_GET['addproduct']=='false'){
+			  }else if($_GET['editproduct']=='false'){
 			?>
 			<label>
-				<h4 style="color:red"><strong>Product add failed!</strong></h4>
+				<h4 style="color:red"><strong>Product Edit failed!</strong></h4>
 			</label>
 			<?php
 			  }
@@ -105,7 +105,14 @@
 		
                 
 	</div>
-
+	<div class="contain">
+		<h3>Image upload</h3>
+		
+						
+		
+		
+		
+	</div>
    </div>
 	<script>
 		var checkselect = <?php echo json_encode($cateselect); ?>;

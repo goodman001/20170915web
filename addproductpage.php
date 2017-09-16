@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Buildings Images Library</title>
+    <title>Famox</title>
     <meta http-equiv="Content-Type" content="text/html; UTF-8" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/form.css" type="text/css" />

@@ -13,7 +13,7 @@
 			<?php if(empty($_SESSION['username'])){?>
 			<li style="margin-left:40%;"><a class="enter" href="login.php">Login</a></li> 
 			<?php }else{ ?>
-			<li style="color:white;font-size:16px;">Dear Admin <?php echo $_SESSION['username'];?>,<a class="enter" href="<?php echo 'catmgr.php?catid='.$catid.'&cname='.$cname; ?>">visit my account</a></li>
+			<li style="color:white;font-size:16px;">Dear Admin <?php echo $_SESSION['username'];?></li>
 			<li><a class="enter" href="logoff.php">Logout</a></li>
 			<?php }?>
 		</ul>

@@ -34,19 +34,13 @@
 		<div class="mgr">
 			<div>
 				<div class="noticecat">
-					<?php if($_GET['updatecat']=='true'){
-					?>
-					Update successfully!
+					
 					<?php
-					  }else if($_GET['updatecat']=='false'){
-					?>
-					Update failed!
-					<?php
-					  }else if($_GET['delcat']=='true'){
+					  if($_GET['delproduct']=='true'){
 					?>
 					Delete successfully!
 					<?php
-					  }else if($_GET['delcat']=='false'){
+					  }else if($_GET['delproduct']=='false'){
 					?>
                     Delete failed!
 					<?php
@@ -77,7 +71,7 @@
 								<td><?php echo $row["product_country_of_origin"]; ?></td>
 								<td>
 									<a class="buttons" href="editproductpage.php?id=<?php echo $row["product_id"];?>">Edit</a>
-									<a class="buttons" href="postdelete.php">Delete</a>
+									<a class="buttons" href="postdelproduct.php?id=<?php echo $row["product_id"];?>">Delete</a>
 								</td>
 							</tr>
 						<?php }

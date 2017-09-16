@@ -10,7 +10,8 @@
       exit;
    }
    /*get post value, filter special character*/
-   $name = addslashes(htmlspecialchars($_POST['name']));
+	$id = addslashes(htmlspecialchars($_GET['id']));
+    $name = addslashes(htmlspecialchars($_POST['name']));
 	$purchaseprice = addslashes(htmlspecialchars($_POST['purchaseprice']));
 	$saleprice = addslashes(htmlspecialchars($_POST['saleprice']));
 	$origincountry = addslashes(htmlspecialchars($_POST['origincountry']));
@@ -26,24 +27,22 @@
 	}
 	/*create sql query to check if the category is in the dababase*/
 	$sql="select count(*) as num from PRODUCT where product_name='$name'"; 
-	$result=mysql_query($sql); 
-	$count =mysql_result($result,0,"num");
-	echo $count;
-	if(!$count)// if the count is 0, we can insert the new record into the db
+	$sql="update PRODUCT set product_name='$name',product_purchase_price= $purchaseprice,product_sale_price=$saleprice,product_country_of_origin='$origincountry' where product_id='$id'";
+	$result=mysql_query($sql);
+	if($result)//  update successfully
 	{
-		$productid = time();
-		$sql="insert into PRODUCT(product_id,product_name,product_purchase_price,product_sale_price,product_country_of_origin) values($productid,'$name',$purchaseprice,$saleprice,'$origincountry')";
-		mysql_query($sql,$con);//insert the new record into the table
+		$sql="delete from PRODUCT_CATEGORY where product_id='$id'";
+   		$result=mysql_query($sql);
 		foreach($categories as $cell){
 			$cell = addslashes(htmlspecialchars($cell));
-			$sql="INSERT INTO PRODUCT_CATEGORY(product_id, category_id) VALUES ($productid,$cell)";
+			$sql="INSERT INTO PRODUCT_CATEGORY(product_id, category_id) VALUES ($id,$cell)";
 			mysql_query($sql,$con);
 		}
-		//mysql_query($sql,$con);//insert the new record into the table
-		header("location: addproductpage.php?addproduct=true");
+		header("location: editproductpage.php?id=".$id."&editproduct=true");
 	}else
 	{
-		header("location: addproductpage.php?addproduct=false");
+		header("location: editproductpage.php?id=".$id."&editproduct=false");
 		exit;
 	}
+	
 ?>
